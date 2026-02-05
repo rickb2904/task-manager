@@ -1,0 +1,19 @@
+name: SonarQube
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: sqp_7b71452d1162751b4fd678ed3cd95af20b5bea26
+          SONAR_HOST_URL: https://sonarqube.formations-eni.pwet.org
